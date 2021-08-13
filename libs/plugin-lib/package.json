@@ -1,0 +1,7 @@
+{
+  "name": "@share-generators-over-plugins/plugin-lib",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json"
+}

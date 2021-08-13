@@ -1,6 +1,143 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "plugin-app": {
+      "root": "libs/plugin-app",
+      "sourceRoot": "libs/plugin-app/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/plugin-app/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/plugin-app"],
+          "options": {
+            "jestConfig": "libs/plugin-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/plugin-app",
+            "tsConfig": "libs/plugin-app/tsconfig.lib.json",
+            "packageJson": "libs/plugin-app/package.json",
+            "main": "libs/plugin-app/src/index.ts",
+            "assets": [
+              "libs/plugin-app/*.md",
+              {
+                "input": "./libs/plugin-app/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/plugin-app/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/plugin-app",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/plugin-app",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "plugin-app-e2e": {
+      "root": "apps/plugin-app-e2e",
+      "projectType": "application",
+      "sourceRoot": "apps/plugin-app-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugin-app:build",
+            "jestConfig": "apps/plugin-app-e2e/jest.config.js"
+          }
+        }
+      }
+    },
+    "plugin-lib": {
+      "root": "libs/plugin-lib",
+      "sourceRoot": "libs/plugin-lib/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/plugin-lib/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/plugin-lib"],
+          "options": {
+            "jestConfig": "libs/plugin-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/plugin-lib",
+            "tsConfig": "libs/plugin-lib/tsconfig.lib.json",
+            "packageJson": "libs/plugin-lib/package.json",
+            "main": "libs/plugin-lib/src/index.ts",
+            "assets": [
+              "libs/plugin-lib/*.md",
+              {
+                "input": "./libs/plugin-lib/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/plugin-lib/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/plugin-lib",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/plugin-lib",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "plugin-lib-e2e": {
+      "root": "apps/plugin-lib-e2e",
+      "projectType": "application",
+      "sourceRoot": "apps/plugin-lib-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "plugin-lib:build",
+            "jestConfig": "apps/plugin-lib-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }

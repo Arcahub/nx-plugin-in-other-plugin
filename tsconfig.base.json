@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@share-generators-over-plugins/plugin-app": [
+        "libs/plugin-app/src/index.ts"
+      ],
+      "@share-generators-over-plugins/plugin-lib": [
+        "libs/plugin-lib/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

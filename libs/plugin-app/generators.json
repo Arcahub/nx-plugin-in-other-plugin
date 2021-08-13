@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "plugin-app",
+  "version": "0.0.1",
+  "generators": {
+    "plugin-app": {
+      "factory": "./src/generators/plugin-app/generator",
+      "schema": "./src/generators/plugin-app/schema.json",
+      "description": "plugin-app generator"
+    }
+  }
+}
